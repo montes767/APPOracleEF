@@ -1,4 +1,6 @@
-﻿namespace AppOracleMaui
+﻿using AppOracleMaui.MVVM.View;
+
+namespace AppOracleMaui
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new TransactionsPage();
         }
     }
 }

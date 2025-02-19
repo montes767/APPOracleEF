@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppOracleMaui.MVVM.View.StatisticsPage"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             Title="StatisticsPage">
+    <Grid RowDefinitions="15*, 15*, 15*, 55*">
+        <RoundRectangle Grid.RowSpan="2"/>
+        <VerticalStackLayout StyleClass="Header">
+            <Label StyleClass="HeaderSubTitle" Text="Statistics"/>
+        </VerticalStackLayout>
+        <Grid Grid.Row="1" Grid.RowSpan="2" StyleClass="BalanceGrid">
+            <RoundRectangle StyleClass="BalanceRectangle"/>
+            <chart:SfCartesianChart Margin="5, 5, 20, 5">
+                <chart:SfCartesianChart.XAxes>
+                    <chart:CategoryAxis/>
+                </chart:SfCartesianChart.XAxes>
+
+                <chart:SfCartesianChart.YAxes>
+                    <chart:NumericalAxis/>
+                </chart:SfCartesianChart.YAxes>
+
+                <chart:SplineSeries
+                    
+                    XBindingPath="ShownDate"
+                    YBindingPath="TransactionsTotal"/>
+
+            </chart:SfCartesianChart>
+        </Grid>
+        <Grid Grid.Row="3" RowDefinitions=".1*, .9*" StyleClass="Margin15">
+            <Label Text="TopSpending"/>
+            <CollectionView Grid.Row="1" EmptyView="No data">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label StyleClass="NoDataText"
+                                   Text="No data found, click on the plus button to add new data"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
+                            <Label StyleClass="StrongMediumTitle" Text="Transaction"/>
+                            <Label Grid.Row="1" StyleClass="SmallFont" Text="Today"/>
+                            <Label Grid.Column="1" Grid.RowSpan="2" StyleClass="ListAmount" Text="+ $550.00"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>
