@@ -8,7 +8,7 @@ namespace AppOracleMaui
         {
             InitializeComponent();
 
-            MainPage = new TransactionsPage();
+            MainPage = new NavigationPage(new DashboardPage());
         }
     }
 }

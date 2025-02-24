@@ -21,14 +21,14 @@
                 </Frame>
                 <Label Text="Transaction Date" StyleClass="MarginT15"/>
                 <Frame StyleClass="FrameBorder">
-                    <Label Text="{Binding Trans.OperationDate}"/>
+                    <DatePicker Date="{Binding Trans.OperationDate}" />
                 </Frame>
                 <HorizontalStackLayout>
                     <CheckBox IsChecked="True" VerticalOptions="Center"/>
                     <Label Text="{Binding Trans.IsIncome}" VerticalOptions="Center"/>
                 </HorizontalStackLayout>
-                <Button StyleClass="Margin15" Text="Save"/>
-                <Button StyleClass="Margin15, RedControl" Text="Cancel"/>
+                <Button StyleClass="Margin15" Text="Save" Clicked="Boton_save"/>
+                <Button StyleClass="Margin15, RedControl" Text="Cancel" Clicked="buttonCancel"/>
             </VerticalStackLayout>
 
         </Grid>

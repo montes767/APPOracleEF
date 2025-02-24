@@ -30,24 +30,26 @@
         </Grid>
         <Button Grid.Row="2"
                 StyleClass="CircularButton"
+                Clicked="Button_Clicked"
                 Text="+"/>
         <Grid Grid.Row="3"
               RowDefinitions=".1*, .9*"
-              StyleClass="Margin15">
+              StyleClass="Margin15"
+              >
             <Label Text="Transactions"/>
-            <CollectionView Grid.Row="1" EmptyView="0">
+            <CollectionView Grid.Row="1" EmptyView="0" ItemsSource="{Binding Transactions}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
                 </CollectionView.ItemsLayout>
-                <CollectionView.EmptyViewTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="*, *">
-                            <Label StyleClass="StrongMediumTitle" Text="Transaction"/>
-                            <Label Grid.Row="1" StyleClass="SmallFont" Text="Today"/>
-                            <Label Grid.Column="1" Grid.RowSpan="2" StyleClass="ListAmount" Text="+ $5"/>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Grid ColumnDefinitions="*, *" RowDefinitions="*, *"  >
+                            <Label StyleClass="StrongMediumTitle" Text="{Binding Name}"/>
+                            <Label  Grid.Row="1" StyleClass="SmallFont" Text="{Binding OperationDate}"/>
+                            <Label Grid.Column="1" StyleClass="ListAmount" Text="{Binding Amount}"/>
                         </Grid>
                     </DataTemplate>
-                </CollectionView.EmptyViewTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
             
         </Grid>

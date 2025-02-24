@@ -36,7 +36,7 @@ namespace WebApiEfOracle.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Transaction trans)
+        public async Task<IActionResult> Update(int id, Transaction trans)
         {
             var existingTransaction = await _oracleContext.Transactions.FindAsync(id);
             if (existingTransaction == null)
