@@ -16,15 +16,15 @@ public partial class DashboardPage : ContentPage
 		await Navigation.PushAsync(new TransactionsPage());
     }
 
-	protected async override void OnAppearing()
-	{
-		await viewModel.GetTransactions();
-	}
+	//protected async override void OnAppearing()
+	//{
+	//	await viewModel.GetTransactions();
+	//}
 
-    private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-		await Navigation.PushAsync(new TransactionsPage());
-    }
+  //  private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+  //  {
+		//await Navigation.PushAsync(new TransactionsPage());
+  //  }
 
 
 }

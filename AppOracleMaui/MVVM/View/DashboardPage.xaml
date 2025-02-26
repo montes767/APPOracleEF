@@ -16,15 +16,15 @@
                   StyleClass="Padding25">
                 <VerticalStackLayout>
                     <Label Text="TotalBalance"/>
-                    <Label StyleClass="StrongTitle" Text="xxxxx"/>
+                    <Label StyleClass="StrongTitle" Text="{Binding Balance}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Row="2">
                     <Label Text="Income"/>
-                    <Label StyleClass="StrongSubTitle" Text="xxxxx"/>
+                    <Label StyleClass="StrongSubTitle" Text="{Binding Incomes}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Label Text="Expenses"/>
-                    <Label StyleClass="StrongSubTitle" Text="xxxxx"/>
+                    <Label StyleClass="StrongSubTitle" Text="{Binding Expenses}"/>
                 </VerticalStackLayout>
             </Grid>
         </Grid>
@@ -37,7 +37,7 @@
               StyleClass="Margin15"
               >
             <Label Text="Transactions"/>
-            <CollectionView Grid.Row="1" EmptyView="0" ItemsSource="{Binding Transactions}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView Grid.Row="1" EmptyView="0" ItemsSource="{Binding Transactions}" SelectionMode="Single" >
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
                 </CollectionView.ItemsLayout>

@@ -1,11 +1,12 @@
 ﻿using ModelOracleDemo;
+using PropertyChanged;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AppOracleMaui.MVVM.ViewModel
 {
-
+    [AddINotifyPropertyChangedInterface]
     public class TransactionsViewModel
     {
 
@@ -14,10 +15,10 @@ namespace AppOracleMaui.MVVM.ViewModel
         {
             
         }
-        public TransactionsViewModel(Transaction trans)
-        {
-            Trans = trans;
-        }
+        //public TransactionsViewModel(Transaction trans)
+        //{
+        //    Trans = trans;
+        //}
         public async Task SaveTransaction()
         {
             HttpClient client = new HttpClient();
@@ -38,6 +39,11 @@ namespace AppOracleMaui.MVVM.ViewModel
         public async Task CancelTransaction()
         {
 
+        }
+
+        internal async Task change()
+        {
+            throw new NotImplementedException();
         }
     }
 }

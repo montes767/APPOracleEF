@@ -12,12 +12,12 @@ public partial class TransactionsPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
-    public TransactionsPage(Transaction trans)
-    {
-        InitializeComponent();
-		TransactionsViewModel vm = new TransactionsViewModel(trans);
-        BindingContext = vm;
-    }
+  //  public TransactionsPage(Transaction trans)
+  //  {
+  //      InitializeComponent();
+		//TransactionsViewModel vm = new TransactionsViewModel(trans);
+  //      BindingContext = vm;
+  //  }
 
     private async void Boton_save(object sender, EventArgs e)
     {
@@ -31,4 +31,6 @@ public partial class TransactionsPage : ContentPage
 	{
         await Navigation.PopToRootAsync();
     }
+
+    
 }
