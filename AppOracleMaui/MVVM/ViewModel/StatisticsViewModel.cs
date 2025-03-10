@@ -32,7 +32,6 @@ namespace AppOracleMaui.MVVM.ViewModel
             {
                 using (var stream = await response.Content.ReadAsStreamAsync())
                 {
-
                     trans = await JsonSerializer
                         .DeserializeAsync<List<Transaction>>(stream, _jsonOptions)
                          ?? new List<Transaction>();
@@ -40,7 +39,6 @@ namespace AppOracleMaui.MVVM.ViewModel
             }
             return trans;
         }
-    }
     public async Task GetTransactionsSummary()
         {
             var data = await GetTransactions();
@@ -48,7 +46,7 @@ namespace AppOracleMaui.MVVM.ViewModel
 
             var groupedTransactions = data.GroupBy(t => t.OperationDate.Date);
 
-            foreach( var group in groupedTransactions)
+            foreach (var group in groupedTransactions)
             {
                 var transactionSumary = new TransactionsSummary
                 {
@@ -63,4 +61,6 @@ namespace AppOracleMaui.MVVM.ViewModel
             var spendings = data.Where(t => !t.IsIncome).ToList();
             spendings.ForEach(s => SpendingList.Add(s));
         }
+    }
 }
+

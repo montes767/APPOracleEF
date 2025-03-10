@@ -24,7 +24,7 @@
                     <DatePicker Date="{Binding Trans.OperationDate}" />
                 </Frame>
                 <HorizontalStackLayout>
-                    <CheckBox IsChecked="{Binding Trans.IsIncome,  Mode=TwoWay}" VerticalOptions="Center" />
+                    <CheckBox IsChecked="{Binding Trans.IsIncome}" VerticalOptions="Center" />
                     <Label Text="is income" VerticalOptions="Center"/>
                 </HorizontalStackLayout>
                 <Button StyleClass="Margin15" Text="Save" Clicked="Boton_save"/>
