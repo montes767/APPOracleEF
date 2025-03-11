@@ -1,4 +1,4 @@
-﻿using Java.Net;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AppOracleMaui.Repository
 {
-    public class ApiBaseRepository<T> : IBaseRepository<T>
+    public class ApiBaseRepository<T> : IBaseRepository<T> where T : class, new()
     {
 
         private readonly HttpClient _client = new HttpClient();
@@ -26,7 +26,7 @@ namespace AppOracleMaui.Repository
 
         public async Task<List<T>> GetAll()
         {
-            return await _client.Get(_url);
+            return await _client!.GetFromJsonAsync<List<T>>(_url);
         }
 
         public void Save(T item)
@@ -34,9 +34,6 @@ namespace AppOracleMaui.Repository
             _client.PostAsJsonAsync(_url, item);
         }
 
-        Task<T> IBaseRepository<T>.GetAll()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

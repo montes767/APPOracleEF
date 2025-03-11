@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AppOracleMaui.MVVM.Model;
+using AppOracleMaui.Repository;
+using Microsoft.Extensions.Logging;
+using ModelOracleDemo;
 using Syncfusion.Maui.Core.Hosting;
 
 namespace AppOracleMaui
@@ -19,9 +22,10 @@ namespace AppOracleMaui
                     fonts.AddFont("LibreFranklin-Regular.ttf", "Regular");
                 
                 });
-
+            builder.Services.AddSingleton<IBaseRepository<Transaction>, ApiBaseRepository<Transaction>>();
+            
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

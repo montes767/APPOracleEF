@@ -1,11 +1,10 @@
 ﻿
 using SQLite;
-
-
+using SQLiteNetExtensions.Extensions;
 
 namespace AppOracleMaui.Repository
 {
-   public class SqlBaseRepository<T> : IBaseRepository<T> where T : TableData, new()
+    public class SqlBaseRepository<T> : IBaseRepository<T> where T : class, new()
     {
         /// <summary>
         /// Connection to database
@@ -27,24 +26,14 @@ namespace AppOracleMaui.Repository
 
         public void Save(T item)
         {
-            try
-            {
-                if (item.Id == 0)
-                {
+          
                     int rows = _connection.Insert(item);
                     StatusMessage = $"Added: {rows}";
-                }
-                else
-                {
-                    int rows = _connection.Update(item);
-                    StatusMessage = $"Updated: {rows}";
-                }
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = $"Error: {ex}";
-
-            }
+                
+                    int rows1 = _connection.Update(item);
+                    StatusMessage = $"Updated: {rows1}";
+               
+          
         }
 
        
@@ -53,9 +42,13 @@ namespace AppOracleMaui.Repository
             throw new NotImplementedException();
         }
 
-        public List<T> GetAll()
+
+
+       
+
+       public Task<List<T>> GetAll()
         {
-            return _connection.Table<T>().ToList();
+            return Task.FromResult(_connection.GetAllWithChildren<T>());
         }
     }
 }

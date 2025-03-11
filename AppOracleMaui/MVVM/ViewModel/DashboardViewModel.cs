@@ -14,7 +14,7 @@ namespace AppOracleMaui.MVVM.ViewModel
 
     public class DashboardViewModel
     {
-
+        
         public decimal Incomes { get; set; }
         public decimal Expenses { get; set; }
         public decimal Balance { get; set; }
@@ -34,22 +34,13 @@ namespace AppOracleMaui.MVVM.ViewModel
 
         public async Task GetTransactions()
         {
-            HttpClient client = new HttpClient();
 
-            JsonSerializerOptions _jsonOptions =
-                new JsonSerializerOptions(JsonSerializerDefaults.Web);
-            string url = "http://10.0.2.2:5173/Transactions/";
-            var response = await client.GetAsync(url);
+           var response= await App.TransactionRepository.GetAll();
 
-            if (response.IsSuccessStatusCode)
-            {
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                {
-                    var data = await JsonSerializer
-                        .DeserializeAsync<List<Transaction>>(stream, _jsonOptions) ?? new List<Transaction>();
+            var data = response;
 
 
-                    Transactions.Clear();
+            Transactions.Clear();
                     
                     data.ForEach(t =>
                     {
@@ -70,7 +61,5 @@ namespace AppOracleMaui.MVVM.ViewModel
             }
 
         }
+  
 
-      
-    }
-}

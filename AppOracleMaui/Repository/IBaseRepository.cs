@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AppOracleMaui.Repository
 {
-    public interface IBaseRepository<T> : IDisposable
+    public interface IBaseRepository<T> : IDisposable where T : class, new()
     {
         void Save(T item);
         
-        Task<T> GetAll();
+        Task<List<T>> GetAll();
        
 
     }
